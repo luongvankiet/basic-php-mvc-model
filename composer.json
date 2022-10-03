@@ -9,7 +9,14 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "routes/api.php",
+            "routes/web.php",
+            "app/Core/Helper.php"
+        ]
     },
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
 }

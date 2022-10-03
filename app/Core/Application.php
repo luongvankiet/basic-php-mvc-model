@@ -2,23 +2,38 @@
 
 namespace App\Core;
 
+use App\Models\User;
+
 class Application
 {
-    public static string $ROOT_DIR;
-    public Application $app;
-    public Router $router;
-    public Request $request;
-    public Response $response;
+    public static $app;
+    public ?User $authenticatedUser = null;
+    public Session $session;
+    public static $config;
 
-    public function __construct($rootPath) {
-        self::$ROOT_DIR = $rootPath;
-        $this->request = new Request();
-        $this->response = new Response();
-        $this->router = new Router($this->request, $this->response);
+    public function __construct()
+    {
+        self::$app = $this;
+        $primaryKey = Helper::session()->get('user');
+
+        if ($primaryKey) {
+            $this->setAuthenticatedUser(User::getInstance()->find(['id' => $primaryKey]) ?? null);
+        }
     }
 
     public function run()
     {
-        echo $this->router->resolve();
+        echo (new Router())->resolve();
+    }
+
+    public function setAuthenticatedUser(?User $user = null)
+    {
+        if (!$user) {
+            return;
+        }
+
+        $this->authenticatedUser = $user;
+        $primaryKey = $user->getPrimaryKey();
+        $this->session->set('user', $user->{$primaryKey});
     }
 }

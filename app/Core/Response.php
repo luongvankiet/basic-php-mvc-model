@@ -2,10 +2,18 @@
 
 namespace App\Core;
 
+
 class Response
 {
-    public function setStatusCode(int $code)
+    public static function setStatusCode(int $code)
     {
         http_response_code($code);
+    }
+
+    public static function redirect($path = '/')
+    {
+        $path = Helper::appUrl() . $path;
+
+        header('Location: '.$path);
     }
 }

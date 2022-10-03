@@ -6,10 +6,14 @@ class Request
 {
     protected array $routes = [];
 
-    public function getPath()
+    public static function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
         $position = strpos($path, '?');
+
+        $appBase = Helper::appBase();
+
+        $path = substr($path, strlen($appBase));
 
         if ($position === false) {
             return $path;
@@ -18,7 +22,7 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod()
+    public static function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
@@ -49,5 +53,15 @@ class Request
         }
 
         return $this->getBody()[$name] ?? null;
+    }
+
+    public function isGet()
+    {
+        return $this->getMethod() === 'get';
+    }
+
+    public function isPost()
+    {
+        return $this->getMethod() === 'post';
     }
 }
