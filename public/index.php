@@ -12,6 +12,6 @@ $app->router->get('/', 'home');
 $app->router->get('/contact', [ContactController::class, 'index']);
 $app->router->post('/contact', [ContactController::class, 'store']);
 
-
+$app = new Application(dirname(__DIR__));
 
 $app->run();

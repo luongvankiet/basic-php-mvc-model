@@ -3,17 +3,22 @@
 namespace App\Controllers;
 
 use App\Core\Application;
+use App\Core\Response;
 
 class Controller
 {
-    private Application $app;
-
-    public function __construct() {
-        $this->app = new Application(Application::$ROOT_DIR);
+    public function setLayout($layout)
+    {
+        Application::setLayout($layout);
     }
 
     public function render($view, $params = [])
     {
-        return $this->app->router->renderView($view, $params);
+        return Application::renderView($view, $params);
+    }
+
+    public function redirect($path = "/")
+    {
+        return Response::redirect($path);
     }
 }

@@ -1,0 +1,66 @@
+@use "sass:math";
+
+//colors
+// $primary: #326dee;
+$primary: rgb(200, 16, 46);
+$secondary: #6c757d;
+$success: #198754;
+$danger: #dc3545;
+$warning: #f6c31c;
+
+//color palette
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "warning": $warning,
+    "danger": $danger,
+    "blue": #1919e6,
+    "red": #e61919,
+    "yellow": #e6e619,
+    "green": #19e635,
+    "orange": #ffa600,
+    "purple": #9900ff,
+    "gray": #808080,
+    "black": #262626,
+    "white": white,
+);
+
+//spacing
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+// borders
+$base-border-thickness: 1px;
+$base-border-radius: 5px;
+
+//box-shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+
+// font sizes
+$base-font-size: 1rem;
+$font-size-xs: $base-font-size * 0.5;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+$font-size-xxl: $base-font-size * 4;
+
+// grid & layouts
+$grid-columns: 12;
+$grid-gaps: (
+    "0": 0,
+    "1": 10px,
+    "2": 20px,
+    "3": 30px,
+);
+
+$justify-content-values: flex-start, flex-end, center, space-between, space-around;
+$align-item-values: stretch, flex-start, flex-end, center, baseline, initial, inherit;
+$text-align-values: left, right, center, justify, initial, inherit;
+$positions: static, absolute, fixed, relative, sticky, initial, inherit;
+
+$input-color: #212529;
+$input-placehoder-color: #6c757d;
+$input-disabled-color: #e9ecef;
+$input-line-height: 1.5;
+$input-padding: math.div($base-padding, 2);
