@@ -8,6 +8,8 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
+
     <link rel="stylesheet" href="<?php echo \App\Core\Application::assets('dist/css/index.css') ?>">
     <link rel="stylesheet" href="<?php echo \App\Core\Application::assets('css/style.css') ?>">
 </head>
@@ -57,15 +59,11 @@
                         <li class="mb-2">
                             <h1>Locations</h1>
                         </li>
-                        <li>
-                            <a href="#" class="text-hover-primary">Central</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-hover-primary">Town Hall</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-hover-primary">Redfern</a>
-                        </li>
+                        <?php foreach (\App\Core\Application::locations() as $location) { ?>
+                            <li>
+                                <a href="#" class="text-hover-primary"><?php echo $location->name ?></a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-lg-3">
@@ -153,6 +151,7 @@
     <!-- ############### Footer End ############### -->
 
     <script src="<?php echo \App\Core\Application::assets('js/jquery-3.6.1.min.js') ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="<?php echo \App\Core\Application::assets('js/app.js') ?>"></script>
 </body>
 

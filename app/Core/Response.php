@@ -16,4 +16,9 @@ class Response
 
         header('Location: ' . $path);
     }
+
+    public static function redirectBack()
+    {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 }

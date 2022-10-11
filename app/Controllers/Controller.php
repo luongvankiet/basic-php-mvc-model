@@ -21,4 +21,9 @@ class Controller
     {
         return Response::redirect($path);
     }
+
+    public function redirectBack()
+    {
+        return Response::redirectBack();
+    }
 }

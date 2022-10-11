@@ -2,7 +2,9 @@
 
 namespace App\Core;
 
+use App\Models\Location;
 use App\Models\User;
+use Locale;
 
 class Application
 {
@@ -35,6 +37,9 @@ class Application
     /** @var \App\Models\User|null */
     protected static $authenticatedUser;
 
+    /** @var array */
+    protected static $locations;
+
     public function __construct($rootPath)
     {
         self::$app = $this;
@@ -49,6 +54,7 @@ class Application
         self::$response = new Response();
         self::$session = new Session();
         self::$db = new Database();
+        self::$locations = Location::getInstance()->get();
 
         $primaryKey = self::session()->get('user');
 
@@ -188,5 +194,10 @@ class Application
     public static function toCamelCase($input, $separator = '_')
     {
         return lcfirst(str_replace($separator, '', ucwords($input, $separator)));
+    }
+
+    public static function locations()
+    {
+        return self::$locations = Location::getInstance()->get();
     }
 }

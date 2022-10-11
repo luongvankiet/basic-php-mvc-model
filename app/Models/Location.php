@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Course extends Model
+class Location extends Model
 {
     /** @var int */
     public $id;
@@ -11,22 +11,22 @@ class Course extends Model
     public $name;
 
     /** @var string */
-    public $description;
+    public $address;
 
     /** @var string */
-    public $imagePath;
+    public $phoneContact;
 
-    /** @var int */
-    public $categoryId;
+    /** @var string */
+    public $emailContact;
 
-    protected $table = 'courses';
+    protected $table = 'locations';
     protected $primaryKey = 'id';
 
     protected $attributes = [
         'name',
-        'description',
-        'category_id',
-        'image_path'
+        'address',
+        'phone_contact',
+        'email_contact'
     ];
 
     public static function getInstance(): self

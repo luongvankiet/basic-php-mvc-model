@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Application;
-use App\Core\Database;
 use Exception;
 
 abstract class Model
@@ -13,6 +12,7 @@ abstract class Model
     protected $attributes = [];
     protected $query;
     protected $statement;
+    protected $limit = 10;
 
     public function __construct(array $parameters = [])
     {
@@ -73,7 +73,7 @@ abstract class Model
     public function where($column, $value = null, $operator = '=', $boolean = 'and'): self
     {
         if (empty($this->query)) {
-            self::query();
+            $this->query();
         }
 
         if (strpos($this->query, 'WHERE')) {
@@ -142,5 +142,21 @@ abstract class Model
         }
 
         return $result;
+    }
+
+    public function latest()
+    {
+        $this->query .= " ORDER BY created_at DESC";
+        return $this;
+    }
+
+    public function limit($limit = 10)
+    {
+        if ($limit < 0) {
+            return $this;
+        }
+
+        $this->query .= " LIMIT $limit";
+        return $this;
     }
 }

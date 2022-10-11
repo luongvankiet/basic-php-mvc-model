@@ -2,10 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Core\Application;
+use App\Models\Course;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        return $this->render('home');
+        $topCourses = Course::getInstance()->query()->latest()->limit(3)->get();
+        return $this->render('home', ['courses' => $topCourses]);
     }
 }

@@ -10,6 +10,7 @@ class CreateCoursesTable
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             description text NULL,
+            image_path text NULL,
             category_id INT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
