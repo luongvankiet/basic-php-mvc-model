@@ -19,7 +19,7 @@ class AuthenticationAction
             return false;
         }
 
-        if (! password_verify($loginData->password, $user->password)) {
+        if (!password_verify($loginData->password, $user->password)) {
             Application::session()->setFlash('error', 'Incorrect password!');
             return false;
         }
@@ -35,13 +35,12 @@ class AuthenticationAction
             $user = new User($registerData->toArray());
             $user->save();
             return $this->login(new LoginData($registerData->toArray()));
-        } catch(Exception) {
+        } catch (Exception) {
             return false;
         }
     }
 
     public function logout()
     {
-
     }
 }

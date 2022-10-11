@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+
 class Response
 {
     public static function setStatusCode(int $code)

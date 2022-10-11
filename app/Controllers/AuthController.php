@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Actions\AuthenticationAction;
 use App\Controllers\Controller;
 use App\Core\Application;
