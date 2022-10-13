@@ -1,4 +1,0 @@
-@function contrastColor($color) {
-    $complement: complement($color);
-    @return lighten($complement, 80);
-}
