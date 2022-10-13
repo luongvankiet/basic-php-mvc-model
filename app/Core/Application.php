@@ -145,12 +145,12 @@ class Application
         if (!$path) {
             return self::$APP_URL = self::appDomain() . self::appBase();
         }
-        return self::$APP_URL = self::appDomain() . self::appBase() . (substr($path, 0, 1) === '/' ? '' : '/') . $path;
+        return self::$APP_URL = self::appDomain() . self::appBase() . 'index.php' . (substr($path, 0, 1) === '/' ? '' : '/') . $path;
     }
 
     public static function assets($path = '')
     {
-        return self::appUrl() . '/assets' . (substr($path, 0, 1) === '/' ? '' : '/') . $path;
+        return self::appDomain() . self::appBase() . 'public/assets' . (substr($path, 0, 1) === '/' ? '' : '/') . $path;
     }
 
     public static function rootDir()

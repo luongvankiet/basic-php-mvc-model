@@ -8,14 +8,20 @@ class Request
 
     public static function getPath()
     {
-        $parsedUrl = parse_url($_SERVER['REQUEST_URI'] ?? '/');
-        $appBase = Application::appBase();
 
+        $parsedUrl = parse_url($_SERVER['REQUEST_URI'] ?? '/');
+
+        $appBase = Application::appBase() . 'index.php';
         if (!$parsedUrl['path']) {
             return '/';
         }
 
         $path = substr($parsedUrl['path'], strlen($appBase));
+
+
+        if (!$path) {
+            $path = '/';
+        }
 
         return $path;
     }
