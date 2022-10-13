@@ -9,7 +9,9 @@
             <div class="carousel-item <?php echo $key === 0 ? 'active' : '' ?>">
                 <img src="<?php echo \App\Core\Application::assets($course->imagePath) ?>" class="d-block w-100 course-img" alt="..." style="height: 40rem; object-fit: cover;">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1><?php echo $course->name ?></h1>
+                    <a class="text-decoration-none text-white" href="<?php echo \App\Core\Application::appUrl("courses/$course->id") ?>">
+                        <h1><?php echo $course->name ?></h1>
+                    </a>
                     <p><?php echo $course->description ?></p>
                 </div>
             </div>
@@ -29,7 +31,7 @@
     <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
             <?php foreach ($categories as $key => $category) { ?>
-                <button class="nav-link <?php echo $key === 0 ? 'active' : '' ?>" data-bs-toggle="tab" data-bs-target="#category-<?php echo $key ?>-tab" type="button" role="tab" aria-controls="category-<?php echo $key ?>-tab" aria-selected="true"><?php echo $category->name ?></button>
+                <button class="nav-link text-dark <?php echo $key === 0 ? 'active' : '' ?>" data-bs-toggle="tab" data-bs-target="#category-<?php echo $key ?>-tab" type="button" role="tab" aria-controls="category-<?php echo $key ?>-tab" aria-selected="true"><?php echo $category->name ?></button>
             <?php } ?>
         </div>
     </nav>
@@ -47,7 +49,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $course->name ?></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                    <a href="<?php echo \App\Core\Application::appUrl("course/$course->id") ?>"><button type="button" class="btn btn-dark">See Class</button></a>
+                                    <a href="<?php echo \App\Core\Application::appUrl("courses/$course->id") ?>"><button type="button" class="btn btn-dark">See Class</button></a>
                                 </div>
                             </div>
                         </div>

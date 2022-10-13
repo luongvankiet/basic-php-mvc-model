@@ -2,16 +2,15 @@
 
 use App\Core\Application;
 
-class CreateCoursesTable
+class CreateBlogsTable
 {
     public function up()
     {
-        $sql = "CREATE TABLE courses (
+        $sql = "CREATE TABLE blogs (
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            description text NULL,
+            title VARCHAR(255) NOT NULL,
+            content text NULL,
             image_path text NULL,
-            duration INT NULL DEFAULT 2,
             category_id INT NULL,
             user_id INT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -25,7 +24,7 @@ class CreateCoursesTable
 
     public function down()
     {
-        $sql = "DROP TABLE courses;";
+        $sql = "DROP TABLE blogs;";
         Application::db()->pdo->exec($sql);
     }
 }

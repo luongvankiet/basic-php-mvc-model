@@ -2,8 +2,10 @@
 
 use App\Controllers\Admin\DashboardController;
 use App\Controllers\AuthController;
+use App\Controllers\BlogController;
 use App\Controllers\CourseController;
 use App\Controllers\HomeController;
+use App\Controllers\UserController;
 use App\Core\Route;
 
 
@@ -19,6 +21,10 @@ Route::get('/auth/logout', [AuthController::class, 'logout']);
 // Client routes
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/courses', [CourseController::class, 'index']);
-Route::get('/courses/{id}', [CourseController::class, 'index']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/{id}', [BlogController::class, 'show']);
+
+Route::get('/profile/{id}', [UserController::class, 'show']);
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);

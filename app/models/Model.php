@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Core\Application;
 use Exception;
+use PDO;
 
 abstract class Model
 {
@@ -27,6 +28,8 @@ abstract class Model
             }
         }
     }
+
+    abstract public function toArray();
 
     public function getTableName()
     {
@@ -96,6 +99,29 @@ abstract class Model
         return $this->where($column, $value, $operator, 'or');
     }
 
+    public function whereIn($column, array $values = [])
+    {
+        if (empty($this->query)) {
+            $this->query();
+        }
+
+        $index = implode(',', array_map(function ($key) {
+            return ":$key";
+        }, array_keys($values)));
+
+        $this->query .= "WHERE $column IN ($index)";
+
+        // Application::dd($this->query);
+
+        $this->prepareStatement($this->query);
+
+        foreach ($values as $key => $value) {
+            $this->statement->bindValue(":$key", $value);
+        }
+
+        return $this;
+    }
+
     public function get()
     {
         if (empty($this->query)) {
@@ -144,11 +170,11 @@ abstract class Model
 
         $this->statement->execute();
 
-        if (!$result = $this->statement->fetchObject(static::class)) {
+        if (!$result = $this->statement->fetch()) {
             return null;
         }
 
-        return $result;
+        return new static($result);
     }
 
     public function latest()
@@ -167,5 +193,18 @@ abstract class Model
         return $this;
     }
 
-    abstract public function toArray();
+    public function count()
+    {
+        if (empty($this->query)) {
+            $this->query();
+        }
+
+        if (!$this->statement) {
+            $this->prepareStatement($this->query);
+        }
+
+        $this->statement->execute();
+
+        return $this->statement->rowCount();
+    }
 }

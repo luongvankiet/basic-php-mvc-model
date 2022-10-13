@@ -20,6 +20,15 @@ class User extends Model
     public $imagePath;
 
     /** @var string */
+    public $shortDescription;
+
+    /** @var string */
+    public $description;
+
+    /** @var string */
+    public $position;
+
+    /** @var string */
     public $password;
 
     protected $table = 'users';

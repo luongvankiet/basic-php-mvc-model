@@ -14,7 +14,10 @@ class CreateUsersTable
             phone VARCHAR(200) NULL,
             password VARCHAR(255) NOT NULL,
             image_path TEXT NULL,
+            short_description TEXT NULL,
+            description TEXT NULL,
             role VARCHAR(255) NULL DEFAULT 'customer',
+            position VARCHAR(255) NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";

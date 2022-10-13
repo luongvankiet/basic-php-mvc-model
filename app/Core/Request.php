@@ -8,19 +8,34 @@ class Request
 
     public static function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
-
-        $position = strpos($path, '?');
-
+        $parsedUrl = parse_url($_SERVER['REQUEST_URI'] ?? '/');
         $appBase = Application::appBase();
 
-        $path = substr($path, strlen($appBase));
-
-        if ($position === false) {
-            return $path;
+        if (!$parsedUrl['path']) {
+            return '/';
         }
 
-        return substr($path, 0, $position);
+        $path = substr($parsedUrl['path'], strlen($appBase));
+
+        return $path;
+    }
+
+    public static function getQuery()
+    {
+        $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+
+        $query = [];
+        if ($parsedUrl['query'] ?? false) {
+            $split = explode('&', $parsedUrl['query']);
+            foreach ($split as $s) {
+                $value = explode('=', $s);
+                if ($value[0] ?? false && $value[1] ?? false) {
+                    $query[$value[0]] = $value[1];
+                }
+            }
+        }
+
+        return $query;
     }
 
     public static function getMethod()

@@ -34,7 +34,6 @@ class Application
     /** @var \App\Core\Session */
     protected static $session;
 
-    /** @var \App\Models\User|null */
     protected static $authenticatedUser;
 
     /** @var array */
@@ -103,18 +102,22 @@ class Application
         return self::$env[$key] ?? false;
     }
 
-    public static function varDump($value)
+    public static function varDump(...$values)
     {
-        echo '<pre>';
-        var_dump($value);
-        echo '</pre>';
+        foreach ($values as $value) {
+            echo '<pre>';
+            var_dump($value);
+            echo '</pre>';
+        }
     }
 
-    public static function dd($value)
+    public static function dd(...$values)
     {
-        echo '<pre>';
-        var_dump($value);
-        echo '</pre>';
+        foreach ($values as $value) {
+            echo '<pre>';
+            var_dump($value);
+            echo '</pre>';
+        }
         exit;
     }
 

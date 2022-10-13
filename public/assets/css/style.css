@@ -61,7 +61,7 @@
     transition: 0.5s !important;
 }
 
-.team-image {
+.profile-image {
     object-fit: cover;
     width: 140px !important;
     height: 140px !important;
@@ -71,4 +71,17 @@
 #course-content-tab .card:hover {
     transform: scale(1.02) !important;
     transition: 0.5s !important;
+}
+
+#course-detail-title {
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 30rem;
+}
+
+.bg-image {
+    background-color: #f8f9fa;
+    background-position: 0 50%;
+    background-size: cover;
 }

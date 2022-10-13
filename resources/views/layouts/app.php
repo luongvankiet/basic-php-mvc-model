@@ -41,7 +41,7 @@
                             <a class="nav-link text-white">Locations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white">Blogs</a>
+                            <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl('blogs') ?>">Blogs</a>
                         </li>
                         <?php if (\App\Core\Application::currentUser()) { ?>
                             <li class="nav-item dropdown">
@@ -75,9 +75,17 @@
                     <div class="col-6 col-md-2 mb-3">
                         <h5>Section</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Memberships</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Courses</a></li>
+                            <li class="nav-item mb-2">
+                                <a href="<?php echo \App\Core\Application::appUrl() ?>" class="nav-link p-0 text-muted">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="<?php echo \App\Core\Application::appUrl() ?>" class="nav-link p-0 text-muted">Memberships</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="<?php echo \App\Core\Application::appUrl('courses') ?>" class="nav-link p-0 text-muted">Courses</a>
+                            </li>
                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
                         </ul>
                     </div>

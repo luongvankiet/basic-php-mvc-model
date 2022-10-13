@@ -29,6 +29,11 @@ class Category extends Model
         return Course::getInstance()->where('category_id', $this->id)->get();
     }
 
+    public function postCount()
+    {
+        return Blog::getInstance()->where('category_id', $this->id)->count();
+    }
+
     public function toArray()
     {
         return [

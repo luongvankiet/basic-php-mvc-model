@@ -4,7 +4,7 @@ namespace App\Core;
 
 class Route
 {
-    public static array $routes = [];
+    protected static array $routes = [];
 
     public static function get($path, $callback)
     {
@@ -14,5 +14,10 @@ class Route
     public static function post($path, $callback)
     {
         self::$routes['post'][$path] = $callback;
+    }
+
+    public static function getAll()
+    {
+        return self::$routes;
     }
 }

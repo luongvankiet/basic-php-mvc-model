@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Core\Application;
+
 class Course extends Model
 {
     /** @var int */
@@ -17,7 +19,13 @@ class Course extends Model
     public $imagePath;
 
     /** @var int */
+    public $duration;
+
+    /** @var int */
     public $categoryId;
+
+    /** @var int */
+    public $userId;
 
     protected $table = 'courses';
     protected $primaryKey = 'id';
@@ -26,13 +34,39 @@ class Course extends Model
         'name',
         'description',
         'category_id',
-        'image_path'
+        'image_path',
+        'user_id'
     ];
 
     public static function getInstance(): self
     {
         return new self;
     }
+
+    public function locations()
+    {
+        $courseLocations = LocationCourse::getInstance()->where('course_id', $this->id)->get();
+        $locationIds = array_map(function ($courseLocations) {
+            return $courseLocations->locationId;
+        }, $courseLocations);
+
+        return Location::getInstance()->whereIn('id', $locationIds)->get();
+    }
+
+    public function trainer()
+    {
+        return User::getInstance()->where('id', $this->userId)->first();
+    }
+
+    // public function locations()
+    // {
+    //     $courseLocations = LocationCourse::getInstance()->where('course_id', $this->id)->get();
+    //     $locationIds = array_map(function ($courseLocations) {
+    //         return $courseLocations->locationId;
+    //     }, $courseLocations);
+
+    //     return Location::getInstance()->whereIn('id', $locationIds)->get();
+    // }
 
     public function toArray()
     {
