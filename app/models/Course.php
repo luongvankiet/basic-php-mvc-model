@@ -33,4 +33,17 @@ class Course extends Model
     {
         return new self;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'image_path' => $this->imagePath,
+            'category_id' => $this->categoryId,
+            'created_at' => $this->createdAt,
+            'updated_at' => $this->updatedAt,
+        ];
+    }
 }

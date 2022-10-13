@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class Location extends Model
+use App\Core\Application;
+
+class Category extends Model
 {
     /** @var int */
     public $id;
@@ -10,23 +12,11 @@ class Location extends Model
     /** @var string */
     public $name;
 
-    /** @var string */
-    public $address;
-
-    /** @var string */
-    public $phoneContact;
-
-    /** @var string */
-    public $emailContact;
-
-    protected $table = 'locations';
+    protected $table = 'categories';
     protected $primaryKey = 'id';
 
     protected $attributes = [
         'name',
-        'address',
-        'phone_contact',
-        'email_contact'
     ];
 
     public static function getInstance(): self
@@ -34,14 +24,16 @@ class Location extends Model
         return new self;
     }
 
+    public function courses()
+    {
+        return Course::getInstance()->where('category_id', $this->id)->get();
+    }
+
     public function toArray()
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'address' => $this->address,
-            'phone_contact' => $this->phoneContact,
-            'email_contact' => $this->emailContact,
             'created_at' => $this->createdAt,
             'updated_at' => $this->updatedAt,
         ];

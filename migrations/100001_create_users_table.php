@@ -13,6 +13,7 @@ class CreateUsersTable
             email VARCHAR(255) NOT NULL UNIQUE,
             phone VARCHAR(200) NULL,
             password VARCHAR(255) NOT NULL,
+            image_path TEXT NULL,
             role VARCHAR(255) NULL DEFAULT 'customer',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

@@ -17,6 +17,9 @@ class User extends Model
     public $email;
 
     /** @var string */
+    public $imagePath;
+
+    /** @var string */
     public $password;
 
     protected $table = 'users';
@@ -38,5 +41,43 @@ class User extends Model
     {
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         parent::save();
+    }
+
+    public function name()
+    {
+        $name = [];
+
+        if ($this->firstName) {
+            $name[] = $this->firstName;
+        }
+
+        if ($this->lastName) {
+            $name[] = $this->lastName;
+        }
+
+        return implode(' ', $name);
+    }
+
+    public function customer()
+    {
+        return $this->query()->where('role', 'customer');
+    }
+
+    public function trainer()
+    {
+        return $this->query()->where('role', 'trainer');
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName,
+            'email' => $this->email,
+            'image_path' => $this->imagePath,
+            'created_at' => $this->createdAt,
+            'updated_at' => $this->updatedAt,
+        ];
     }
 }

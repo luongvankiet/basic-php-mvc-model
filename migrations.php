@@ -7,5 +7,5 @@ use App\Core\Application;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$app = new Application(__DIR__);
+$app = new Application(__DIR__, true);
 $app->db()->runMigrations();

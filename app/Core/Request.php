@@ -9,6 +9,7 @@ class Request
     public static function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
+
         $position = strpos($path, '?');
 
         $appBase = Application::appBase();

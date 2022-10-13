@@ -40,7 +40,7 @@ class Application
     /** @var array */
     protected static $locations;
 
-    public function __construct($rootPath)
+    public function __construct($rootPath, $isMigrating = false)
     {
         self::$app = $this;
 
@@ -54,7 +54,10 @@ class Application
         self::$response = new Response();
         self::$session = new Session();
         self::$db = new Database();
-        self::$locations = Location::getInstance()->get();
+
+        if (!$isMigrating) {
+            self::$locations = Location::getInstance()->get();
+        }
 
         $primaryKey = self::session()->get('user');
 
@@ -98,6 +101,13 @@ class Application
         }
 
         return self::$env[$key] ?? false;
+    }
+
+    public static function varDump($value)
+    {
+        echo '<pre>';
+        var_dump($value);
+        echo '</pre>';
     }
 
     public static function dd($value)

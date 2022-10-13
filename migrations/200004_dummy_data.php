@@ -15,9 +15,13 @@ class DummyData
         $password = '$2y$10$AHopA..7NApfBfNHyUfCXeLeQDGTTA5Eh83zjUx3yUqDIEV3BKjLm';
 
         //insert users
-        $queries[] = "INSERT INTO users(first_name,last_name,email,phone,password) VALUES
-        ('David', 'Smith', 'admin@example.com', '0412345678', '$password'),
-        ('Rose', 'Dowson', 'user@gmail.com', '0412345678', '$password')";
+        $queries[] = "INSERT INTO users(first_name,last_name,email,phone,password,role,image_path) VALUES
+        ('David', 'Smith', 'admin@example.com', '0412345678', '$password','customer', NULL),
+        ('Rose', 'Dowson', 'user@gmail.com', '0412345678', '$password', 'customer', NULL),
+        ('CARLOS', 'SAINZ', 'trainer1@example.com', '0412345678', '$password', 'trainer', 'images/trainers/Team1.jpg'),
+        ('SEBASTIAN', 'VETTEL', 'trainer2@example.com', '0412345678', '$password', 'trainer', 'images/trainers/Team2.jpg'),
+        ('LANDO', 'NORRIS', 'trainer3@example.com', '0412345678', '$password', 'trainer', 'images/trainers/Team3.jpg'),
+        ('MAX', 'VERSTAPPEN', 'trainer4@example.com', '0412345678', '$password', 'trainer', 'images/trainers/Team4.jpg')";
 
         //insert course
         $queries[] = "INSERT INTO courses(name,description,category_id,image_path) VALUES

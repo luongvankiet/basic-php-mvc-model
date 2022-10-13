@@ -19,6 +19,14 @@ class Router
     {
         $path = Request::getPath();
         $method = Request::getMethod();
+
+        // $parsed_url = parse_url($_SERVER['REQUEST_URI']);
+        // Application::dd($parsed_url);
+        // foreach ($this->routes[$method] as $uri => $route) {
+        //     $string = '^' . $uri . '$';
+        //     Application::varDump($string);
+        // }
+
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {

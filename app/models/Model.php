@@ -7,6 +7,9 @@ use Exception;
 
 abstract class Model
 {
+    public $createdAt;
+    public $updatedAt;
+
     protected $table;
     protected $primaryKey;
     protected $attributes = [];
@@ -98,7 +101,11 @@ abstract class Model
         if (empty($this->query)) {
             $this->query();
         }
-        $this->prepareStatement($this->query);
+
+        if (!$this->statement) {
+            $this->prepareStatement($this->query);
+        }
+
         $this->statement->execute();
 
         $results = [];
@@ -159,4 +166,6 @@ abstract class Model
         $this->query .= " LIMIT $limit";
         return $this;
     }
+
+    abstract public function toArray();
 }
