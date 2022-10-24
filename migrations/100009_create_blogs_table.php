@@ -24,7 +24,7 @@ class CreateBlogsTable
 
     public function down()
     {
-        $sql = "DROP TABLE blogs;";
+        $sql = "DROP TABLE IF EXISTS blogs";
         Application::db()->pdo->exec($sql);
     }
 }

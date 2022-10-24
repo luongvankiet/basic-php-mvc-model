@@ -40,10 +40,10 @@ class DummyData
         ('Strength Upper Body', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', '4', 'images/ZumbaClass.jpg', '4')
         ";
 
-        $queries[] = "INSERT INTO locations(name, address, phone_contact, email_contact) VALUES
-        ('Central', '123 Abc, Central, NSW', '+612345678910', 'contact@example.com'),
-        ('Town Hall', '123 Abc, Town Hall, NSW', '+612345678910', 'contact@example.com'),
-        ('Redfern', '123 Abc, Redfern, NSW', '+612345678910', 'contact@example.com')
+        $queries[] = "INSERT INTO locations(name, address, phone_contact, email_contact, lat, lng) VALUES
+        ('Central', '108 Cabramatta Street, Cabramatta, NSW', '+612345678910', 'contact@example.com', '-33.893909', '150.944611'),
+        ('Town Hall', '108 Pitt Street, Town Hall, NSW', '+612345678910', 'contact@example.com', '-33.8719', '151.20819'),
+        ('Redfern', '123 Abc, Redfern, NSW', '+612345678910', 'contact@example.com', '-33.88947', '151.2047')
         ";
 
         $queries[] = "INSERT INTO location_course(course_id, location_id) VALUES
@@ -77,11 +77,11 @@ class DummyData
         ('2', '9')
         ";
 
-        $queries[] = "INSERT INTO member_plans(name, duration) VALUES
-        ('Bronze', '3'),
-        ('Silver', '3'),
-        ('Gold', '3'),
-        ('Diamond', '3')
+        $queries[] = "INSERT INTO member_plans(name, duration, classes, description, price) VALUES
+        ('Bronze', '1', '1', '<h6>24/7 Gym</h6><h6>One class per week</h6><h6>Access to all location</h6><h6>1 month minimum commitment</h6>', 14.99),
+        ('Silver', '3', '3', '<h6>24/7 Gym</h6><h6>Three class per week</h6><h6>Access to all location</h6><h6>3 months minimum commitment</h6>', 19.99),
+        ('Gold', '12', NULL, '<h6>24/7 Gym</h6><h6>Unlimited class</h6><h6>Access to all location</h6><h6>12 months minimum commitment</h6>', 24.99),
+        ('Diamond', NULL, NULL, '<h6>24/7 Gym</h6><h6>Unlimited class</h6><h6>Access to all location</h6><h6>Unlimited commitment</h6>', 49.99)
         ";
 
         $queries[] = "INSERT INTO memberships(user_id, memberplan_id, joined_at) VALUES

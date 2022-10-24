@@ -20,7 +20,7 @@ class CreateMembershipsTable
 
     public function down()
     {
-        $sql = "DROP TABLE memberships;";
+        $sql = "DROP TABLE IF EXISTS memberships";
         Application::db()->pdo->exec($sql);
     }
 }

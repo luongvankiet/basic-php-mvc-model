@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Core\Application;
 use App\Core\Request;
 use App\Models\Blog;
 use App\Models\Category;

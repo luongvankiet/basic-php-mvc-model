@@ -19,6 +19,12 @@ class Location extends Model
     /** @var string */
     public $emailContact;
 
+    /** @var string */
+    public $lat;
+
+    /** @var string */
+    public $lng;
+
     protected $table = 'locations';
     protected $primaryKey = 'id';
 

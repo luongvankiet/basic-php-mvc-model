@@ -18,7 +18,7 @@ class CreateCategoriesTable
 
     public function down()
     {
-        $sql = "DROP TABLE categories;";
+        $sql = "DROP TABLE IF EXISTS categories";
         Application::db()->pdo->exec($sql);
     }
 }

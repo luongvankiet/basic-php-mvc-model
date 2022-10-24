@@ -51,6 +51,33 @@ class Database
         }
     }
 
+    public function dropMigrations()
+    {
+        $migrations = $this->getAllMigrations();
+
+        $migrationFiles = scandir(Application::rootDir() . '/migrations');
+        $newMigrations = [];
+        $migrationsFromFiles = array_reverse(array_intersect($migrationFiles, $migrations));
+
+        foreach ($migrationsFromFiles as $key => $value) {
+            if ($value === '.' || $value === '..') {
+                continue;
+            }
+
+            require_once Application::rootDir() . '/migrations/' . $value;
+
+            $className = $this->getClassName(pathinfo($value, PATHINFO_FILENAME));
+
+            $instance =  new $className();
+
+            echo "Rolling back $value" . PHP_EOL;
+            $instance->down();
+            echo "Rolled back $value" . PHP_EOL;
+
+            $this->updateMigrationsTable($value);
+        }
+    }
+
     public function createMigrationsTable()
     {
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (
@@ -58,6 +85,12 @@ class Database
             migration VARCHAR(255),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );");
+    }
+
+    public function updateMigrationsTable($migration)
+    {
+        $sql = "DELETE FROM migrations WHERE migration='$migration'";
+        $this->pdo->exec($sql);
     }
 
     public function getAllMigrations()

@@ -25,7 +25,7 @@ class CreateCoursesTable
 
     public function down()
     {
-        $sql = "DROP TABLE courses;";
+        $sql = "DROP TABLE IF EXISTS courses";
         Application::db()->pdo->exec($sql);
     }
 }

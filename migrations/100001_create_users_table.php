@@ -27,7 +27,7 @@ class CreateUsersTable
 
     public function down()
     {
-        $sql = "DROP TABLE users;";
+        $sql = "DROP TABLE IF EXISTS users";
         Application::db()->pdo->exec($sql);
     }
 }
