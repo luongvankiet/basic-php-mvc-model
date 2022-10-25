@@ -10,7 +10,7 @@
                                 <hr />
                                 <ul class="list-group list-group-flush">
                                     <?php foreach ($locations as $key => $location) { ?>
-                                        <li class="list-group-item list-group-item-action locations" data-lat="<?php echo $location->lat ?>" data-lng="<?php echo $location->lng ?>" onclick="focusLocation()">
+                                        <li class="list-group-item list-group-item-action locations" data-lat="<?php echo $location->lat ?>" data-lng="<?php echo $location->lng ?>">
                                             <h6><?php echo $location->name ?></h6>
                                             <p><i class="fa fa-map-marker-alt pr-2"></i> <?php echo $location->address ?></p>
                                         </li>
@@ -31,9 +31,9 @@
 </div>
 
 <script>
-    function focusLocation() {
-        console.log(this);
-    }
+    // function focusLocation(this) {
+    //     this.getAttribute
+    // }
 
     function initMap(location) {
         const myLatLng = location ? location : {
