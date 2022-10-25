@@ -2,7 +2,7 @@
     <div class="row">
         <div class="card bg-white p-3">
             <div class="card-body" style="width: 300px; min-height: 300px">
-                <form action="<?php echo \App\Core\Application::appUrl() ?>/auth/login" method="post">
+                <form action="<?php echo \App\Core\Application::appUrl('/auth/login') ?>" method="post">
                     <h2 class="text-center w-100 mb-4">
                         Login
                     </h2>
@@ -37,7 +37,7 @@
                             Don’t have an account?
                         </span>
 
-                        <a href="<?php echo \App\Core\Application::appUrl() ?>/auth/register" class="text-danger">
+                        <a href="<?php echo \App\Core\Application::appUrl('/auth/register') ?>" class="text-danger">
                             Register
                         </a>
                     </div>
