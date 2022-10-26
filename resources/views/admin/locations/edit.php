@@ -28,10 +28,7 @@
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select name="category_id" id="category" class="form-control <?php echo isset($data) ? ($data->hasError('category') ? 'is-invalid' : '') : '' ?>" value="<?php echo $course->categoryId ?>">
-                    <option value="">--Select Category--</option>
-                    <?php foreach ($categories as $key => $category) { ?>
-                        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-                    <?php } ?>
+
                 </select>
 
                 <?php if (isset($data) && $data->hasError('category')) { ?>

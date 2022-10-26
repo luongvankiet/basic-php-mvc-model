@@ -25,7 +25,7 @@ class CourseController extends Controller
         $this->setLayout('layouts.admin');
 
         $course = Course::getInstance()->where('id', $params['id'])->first();
-        $categories = Category::getInstance()->where('id', $params['id'])->get();
+        $categories = Category::getInstance()->get();
         $trainers = User::getInstance()->trainer()->get();
 
         if (!$course) {

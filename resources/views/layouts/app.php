@@ -34,7 +34,7 @@
                         </li>
                         <?php if (\App\Core\Application::currentUser() && \App\Core\Application::currentUser()->role === 'admin') { ?>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl('admin/dashboard') ?>">Dashboard</a>
+                                <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl('admin/courses') ?>">Dashboard</a>
                             </li>
                         <?php } ?>
                         <li class="nav-item">
@@ -89,7 +89,7 @@
 
                             <?php if (\App\Core\Application::currentUser() && \App\Core\Application::currentUser()->role === 'admin') { ?>
                                 <li class="nav-item mb-2">
-                                    <a href="<?php echo \App\Core\Application::appUrl('admin/dashboard') ?>" class="nav-link p-0 text-muted">
+                                    <a href="<?php echo \App\Core\Application::appUrl('admin/courses') ?>" class="nav-link p-0 text-muted">
                                         Dashboard
                                     </a>
                                 </li>
@@ -114,13 +114,13 @@
                     </div>
 
                     <div class="col-md-5 offset-md-1 mb-3">
-                        <form>
+                        <form action="<?php echo \App\Core\Application::appUrl('sendEmail') ?>" method="POST">
                             <h5>Subscribe to our newsletter</h5>
                             <p>Monthly digest of what's new and exciting from us.</p>
                             <div class="d-flex flex-column flex-sm-row w-100 gap-2">
                                 <label for="newsletter1" class="visually-hidden">Email address</label>
-                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                                <button class="btn btn-primary" type="button">Subscribe</button>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address" name="email">
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
                             </div>
                         </form>
                     </div>

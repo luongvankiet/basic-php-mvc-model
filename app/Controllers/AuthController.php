@@ -56,6 +56,6 @@ class AuthController extends Controller
     {
         Application::setAuthenticatedUser(null);
         Application::session()->remove('user');
-        return $this->redirectBack();
+        return $this->redirect('/');
     }
 }

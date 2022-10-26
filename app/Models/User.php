@@ -34,6 +34,8 @@ class User extends Model
     /** @var string */
     public $role;
 
+    /** @var string */
+    public $phone;
 
     protected $table = 'users';
     protected $primaryKey = 'id';
