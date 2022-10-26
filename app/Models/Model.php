@@ -41,6 +41,18 @@ abstract class Model
         return $this->primaryKey;
     }
 
+    public function delete()
+    {
+        if (empty($this->table)) {
+            return false;
+        }
+
+        $sql = "DELETE FROM $this->table WHERE id = $this->id";
+        $this->prepareStatement($sql);
+
+        $this->statement->execute();
+    }
+
     public function save()
     {
         if (empty($this->table)) {

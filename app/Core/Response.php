@@ -12,7 +12,7 @@ class Response
 
     public static function redirect($path = '/')
     {
-        $path = Application::appUrl() . $path;
+        $path = Application::appUrl($path);
 
         header('Location: ' . $path);
     }

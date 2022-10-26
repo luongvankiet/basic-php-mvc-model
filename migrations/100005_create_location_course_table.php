@@ -9,8 +9,8 @@ class CreateLocationCourseTable
         $sql = "CREATE TABLE location_course (
             location_id INT NOT NULL,
             course_id INT NOT NULL,
-            FOREIGN KEY(location_id) REFERENCES locations(id),
-            FOREIGN KEY(course_id) REFERENCES courses(id),
+            FOREIGN KEY(location_id) REFERENCES locations(id) ON DELETE CASCADE,
+            FOREIGN KEY(course_id) REFERENCES courses(id) ON DELETE CASCADE,
             PRIMARY KEY (location_id, course_id)
         )";
 

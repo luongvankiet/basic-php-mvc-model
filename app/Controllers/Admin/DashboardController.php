@@ -9,6 +9,6 @@ class DashboardController extends Controller
     public function index()
     {
         $this->setLayout('layouts.admin');
-        return $this->render('dashboard');
+        return $this->render('admin.dashboard');
     }
 }

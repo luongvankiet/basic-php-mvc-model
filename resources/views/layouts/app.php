@@ -32,6 +32,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl() ?>">Home</a>
                         </li>
+                        <?php if (\App\Core\Application::currentUser() && \App\Core\Application::currentUser()->role === 'admin') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl('admin/dashboard') ?>">Dashboard</a>
+                            </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="<?php echo \App\Core\Application::appUrl('courses') ?>">Courses</a>
                         </li>
@@ -81,8 +86,17 @@
                                     Home
                                 </a>
                             </li>
+
+                            <?php if (\App\Core\Application::currentUser() && \App\Core\Application::currentUser()->role === 'admin') { ?>
+                                <li class="nav-item mb-2">
+                                    <a href="<?php echo \App\Core\Application::appUrl('admin/dashboard') ?>" class="nav-link p-0 text-muted">
+                                        Dashboard
+                                    </a>
+                                </li>
+                            <?php } ?>
+
                             <li class="nav-item mb-2">
-                                <a href="<?php echo \App\Core\Application::appUrl() ?>" class="nav-link p-0 text-muted">Memberships</a>
+                                <a href="<?php echo \App\Core\Application::appUrl('memberships') ?>" class="nav-link p-0 text-muted">Memberships</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="<?php echo \App\Core\Application::appUrl('courses') ?>" class="nav-link p-0 text-muted">Courses</a>

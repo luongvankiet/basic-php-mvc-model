@@ -16,6 +16,11 @@ class Route
         self::$routes['post'][$path] = $callback;
     }
 
+    public static function delete($path, $callback)
+    {
+        self::$routes['delete'][$path] = $callback;
+    }
+
     public static function getAll()
     {
         return self::$routes;

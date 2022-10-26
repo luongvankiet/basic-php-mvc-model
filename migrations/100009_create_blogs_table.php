@@ -15,8 +15,8 @@ class CreateBlogsTable
             user_id INT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY(category_id) REFERENCES categories(id),
-            FOREIGN KEY(user_id) REFERENCES users(id)
+            FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE,
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
         )";
 
         Application::db()->pdo->exec($sql);

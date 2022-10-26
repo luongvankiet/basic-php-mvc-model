@@ -8,9 +8,9 @@
                             <div class="col-12 col-md-3">
                                 <h4>Locations</h4>
                                 <hr />
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group list-group-flush" id="locations">
                                     <?php foreach ($locations as $key => $location) { ?>
-                                        <li class="list-group-item list-group-item-action locations" data-lat="<?php echo $location->lat ?>" data-lng="<?php echo $location->lng ?>">
+                                        <li class="list-group-item list-group-item-action locations" data-lat="<?php echo $location->lat ?>" data-lng="<?php echo $location->lng ?>" onclick="focusLocation(this)">
                                             <h6><?php echo $location->name ?></h6>
                                             <p><i class="fa fa-map-marker-alt pr-2"></i> <?php echo $location->address ?></p>
                                         </li>
@@ -31,9 +31,27 @@
 </div>
 
 <script>
-    // function focusLocation(this) {
-    //     this.getAttribute
-    // }
+    function focusLocation(element) {
+        const lat = parseFloat(element.getAttribute('data-lat'));
+        const lng = parseFloat(element.getAttribute('data-lng'));
+        const location = {
+            lat: lat,
+            lng: lng,
+        }
+
+        const li = document.getElementsByTagName('li');
+        for (let index = 0; index < li.length; index++) {
+            li[index].classList.remove('active');
+        }
+
+        if (element.classList.contains('active')) {
+            element.classList.remove('active');
+            initMap();
+        } else {
+            element.classList.add('active');
+            initMap(location);
+        }
+    }
 
     function initMap(location) {
         const myLatLng = location ? location : {
@@ -44,6 +62,14 @@
             zoom: 12,
             center: myLatLng,
         });
+
+        if (location) {
+            return new google.maps.Marker({
+                position: location,
+                map
+            });
+        }
+
         <?php foreach ($locations as $key => $location) { ?>
             new google.maps.Marker({
                 position: {

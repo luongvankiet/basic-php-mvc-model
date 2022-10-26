@@ -68,6 +68,12 @@ class Application
 
     public static function currentUser()
     {
+        $primaryKey = self::session()->get('user');
+
+        if ($primaryKey) {
+            self::setAuthenticatedUser(User::getInstance()->find(['id' => $primaryKey ?? null]));
+        }
+
         return self::$authenticatedUser;
     }
 

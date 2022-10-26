@@ -31,6 +31,10 @@ class User extends Model
     /** @var string */
     public $password;
 
+    /** @var string */
+    public $role;
+
+
     protected $table = 'users';
     protected $primaryKey = 'id';
 

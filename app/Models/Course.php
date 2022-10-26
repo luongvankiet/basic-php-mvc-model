@@ -58,6 +58,11 @@ class Course extends Model
         return User::getInstance()->where('id', $this->userId)->first();
     }
 
+    public function category()
+    {
+        return Category::getInstance()->where('id', $this->categoryId)->first();
+    }
+
     // public function locations()
     // {
     //     $courseLocations = LocationCourse::getInstance()->where('course_id', $this->id)->get();

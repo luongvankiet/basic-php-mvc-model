@@ -10,6 +10,7 @@ use App\Controllers\MemberplanController;
 use App\Controllers\UserController;
 use App\Core\Route;
 
+use App\Controllers\Admin\CourseController as AdminCourseController;
 
 //auth routes
 Route::get('/auth/login', [AuthController::class, 'login']);
@@ -32,3 +33,6 @@ Route::get('/locations', [LocationController::class, 'index']);
 Route::get('/profile/{id}', [UserController::class, 'show']);
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+Route::get('/admin/courses', [AdminCourseController::class, 'index']);
+Route::get('/admin/courses/{id}/edit', [AdminCourseController::class, 'edit']);
+Route::post('/admin/courses/{id}/delete', [AdminCourseController::class, 'delete']);
